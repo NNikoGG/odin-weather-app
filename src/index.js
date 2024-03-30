@@ -1,5 +1,5 @@
 import "./style.css";
 
-import { getWeather } from "./modules/api";
+import { render } from "./modules/dom";
 
-getWeather();
+render();

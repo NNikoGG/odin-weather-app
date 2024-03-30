@@ -1,12 +1,11 @@
-function buildUrl() {
+function buildUrl(query) {
   const apiKey = "93486148db0f4cbb96b100525242903";
   const url = "https://api.weatherapi.com/v1/current.json";
-  let query = "London";
   return `${url}?key=${apiKey}&q=${query}`;
 }
 
-async function getWeather() {
-  const url = buildUrl();
+async function getWeather(location) {
+  const url = buildUrl(location);
   try {
     const response = await fetch(url);
     const weatherData = await response.json();

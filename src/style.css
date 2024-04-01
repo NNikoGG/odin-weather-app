@@ -35,3 +35,9 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+.condition-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -10,6 +10,8 @@ function render() {
   const humidity = document.querySelector(".humidity");
   const windSpeed = document.querySelector(".wind-speed");
   const windDirection = document.querySelector(".wind-direction");
+  const condition = document.querySelector(".condition");
+  const conditionImage = document.querySelector("#condition-img");
 
   weatherForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -21,6 +23,8 @@ function render() {
       localTime.textContent = `Local Time: ${data.location.localtime}`;
       temp.textContent = `Temperature: ${data.current.temp_c} °C`;
       feelsLikeTemp.textContent = `Feels Like: ${data.current.feelslike_c} °C`;
+      condition.textContent = `${data.current.condition.text}`;
+      conditionImage.src = `https:${data.current.condition.icon}`;
       humidity.textContent = `Humidity: ${data.current.humidity}%`;
       windSpeed.textContent = `Wind Speed: ${data.current.wind_kph} kph`;
       windDirection.textContent = `Wind Direction: ${data.current.wind_dir}`;

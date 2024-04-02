@@ -1,5 +1,5 @@
 import "./style.css";
 
-import { render } from "./modules/dom";
+import { initWeatherApp } from "./modules/dom";
 
-render();
+initWeatherApp();

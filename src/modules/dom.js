@@ -10,10 +10,28 @@ import patchySleet from "../img/patchy-sleet.jpg";
 import thunderstorm from "../img/thunderstorm.jpg";
 import blowingSnow from "../img/blowing-snow.jpg";
 import blizzard from "../img/blizzard.jpg";
+import lightRain from "../img/light-rain.jpg";
 
-function render() {
+function initWeatherApp() {
   const weatherForm = document.querySelector("#weather-form");
-  const locationInput = document.querySelector("#location-input");
+  weatherForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const locationInput = document.querySelector("#location-input");
+    fetchAndDisplayWeather(locationInput.value);
+  });
+  fetchAndDisplayWeather("New York");
+}
+
+async function fetchAndDisplayWeather(location) {
+  try {
+    const data = await getWeather(location);
+    updateDOM(data);
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+  }
+}
+
+function updateDOM(data) {
   const locationName = document.querySelector(".location-name");
   const localTime = document.querySelector(".local-time");
   const temp = document.querySelector(".temp");
@@ -24,26 +42,16 @@ function render() {
   const condition = document.querySelector(".condition");
   const conditionImage = document.querySelector("#condition-img");
 
-  weatherForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const location = locationInput.value;
-
-    try {
-      const data = await getWeather(location);
-      locationName.textContent = `${data.location.name}, ${data.location.country}`;
-      localTime.textContent = `Local Time: ${data.location.localtime}`;
-      temp.textContent = `Temperature: ${data.current.temp_c} °C`;
-      feelsLikeTemp.textContent = `Feels Like: ${data.current.feelslike_c} °C`;
-      condition.textContent = `${data.current.condition.text}`;
-      conditionImage.src = `https:${data.current.condition.icon}`;
-      humidity.textContent = `Humidity: ${data.current.humidity}%`;
-      windSpeed.textContent = `Wind Speed: ${data.current.wind_kph} kph`;
-      windDirection.textContent = `Wind Direction: ${data.current.wind_dir}`;
-      displayBackground(data.current.condition.code);
-    } catch (error) {
-      console.error("Error fetching weather data:", error);
-    }
-  });
+  locationName.textContent = `${data.location.name}, ${data.location.country}`;
+  localTime.textContent = `Local Time: ${data.location.localtime}`;
+  temp.textContent = `Temperature: ${data.current.temp_c} °C`;
+  feelsLikeTemp.textContent = `Feels Like: ${data.current.feelslike_c} °C`;
+  condition.textContent = `${data.current.condition.text}`;
+  conditionImage.src = `https:${data.current.condition.icon}`;
+  humidity.textContent = `Humidity: ${data.current.humidity}%`;
+  windSpeed.textContent = `Wind Speed: ${data.current.wind_kph} kph`;
+  windDirection.textContent = `Wind Direction: ${data.current.wind_dir}`;
+  displayBackground(data.current.condition.code);
 }
 
 function displayBackground(conditionCode) {
@@ -83,10 +91,13 @@ function displayBackground(conditionCode) {
     case 1117: // Blizzard
       backgroundUrl = `url(${blizzard})`;
       break;
+    case 1183: // Light Rain
+      backgroundUrl = `url(${lightRain})`;
+      break;
     default:
       backgroundUrl = `url(${clearOrSunny})`;
   }
   mainContainer.style.backgroundImage = backgroundUrl;
 }
 
-export { render };
+export { initWeatherApp };

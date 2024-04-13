@@ -94,6 +94,9 @@ function displayBackground(conditionCode) {
     case 1183: // Light Rain
       backgroundUrl = `url(${lightRain})`;
       break;
+    case 1276: // Moderate or heavy rain with thunder
+      backgroundUrl = `url(${thunderstorm})`;
+      break;
     default:
       backgroundUrl = `url(${clearOrSunny})`;
   }

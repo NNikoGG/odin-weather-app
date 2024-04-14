@@ -60,8 +60,17 @@ label{
   background-color: rgb(135, 220, 135);
 }
 
-.hello {
-  color: red;
+#loading {
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1em;
+  border-radius: 5px;
+  display: none;
 }
 
 .main-container {

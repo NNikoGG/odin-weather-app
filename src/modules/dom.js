@@ -23,13 +23,18 @@ function initWeatherApp() {
 }
 
 async function fetchAndDisplayWeather(location) {
+  const loadingElement = document.getElementById('loading');
   try {
+    loadingElement.style.display = 'block';
     const data = await getWeather(location);
     updateDOM(data);
   } catch (error) {
     console.error("Error fetching weather data:", error);
+  } finally {
+    loadingElement.style.display = 'none';
   }
 }
+
 
 function updateDOM(data) {
   const locationName = document.querySelector(".location-name");

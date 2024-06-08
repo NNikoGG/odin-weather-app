@@ -1,36 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webpack Template</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <header id="header">
-        <h1>Weather App</h1>
-      </header>
-      <main id="main">
-        <form id="weather-form" action="">
-          <label for="location-input">Enter your location</label>
-          <input id="location-input" type="text" />
-          <input type="submit" id="submit-button" value="Submit" />
-        </form>
-        <div id="loading" style="display: none;">Loading...</div>
-        <div class="display-info">
-          <div class="location-name"></div>
-          <div class="local-time"></div>
-          <div class="temp"></div>
-          <div class="feels-like-temp"></div>
-          <div class="condition-container">
-            <div class="condition"></div>
-            <img id="condition-img" src="" alt="" />
-          </div>
-          <div class="humidity"></div>
-          <div class="wind-speed"></div>
-          <div class="wind-direction"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <header id="header">
+      <h1>Weather App</h1>
+    </header>
+    <main id="main">
+      <form id="weather-form" action="">
+        <label for="location-input">Enter your location</label>
+        <input id="location-input" type="text" />
+        <input type="submit" id="submit-button" value="Submit" />
+      </form>
+      <div id="loading" style="display: none;">Loading...</div>
+      <div class="display-info">
+        <div class="location-name"></div>
+        <div class="local-time"></div>
+        <div class="temp"></div>
+        <div class="feels-like-temp"></div>
+        <div class="condition-container">
+          <div class="condition"></div>
+          <img id="condition-img" src="" alt="" />
         </div>
-      </main>
-    </div>
-  </body>
+        <div class="humidity"></div>
+        <div class="wind-speed"></div>
+        <div class="wind-direction"></div>
+      </div>
+    </main>
+  </div>
+</body>
+
 </html>
